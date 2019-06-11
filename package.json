@@ -20,6 +20,8 @@
   "homepage": "https://github.com/YourNetworkNerd/Buggle.AI#readme",
   "dependencies": {},
   "devDependencies": {
+    "@types/figlet": "^1.2.0",
+    "@types/nedb": "^1.8.7",
     "chalk": "^2.4.2",
     "eris": "^0.10.0",
     "figlet": "^1.2.3",
