@@ -7,8 +7,9 @@ import * as commands from './commands';
 
 let buggleBot = new Modules.ENGINE(config.TOKEN);
 
-let commandList: any[] = [];
+let commandList: any[] = commands.default;
 let downTime: boolean = config.DOWNTIME || false;
+let prefix: string = config.PREFIX || buggleBot.user.mention;
 let log: any = new Logger();
 
 process.on('SIGINT', async () => {
@@ -55,6 +56,25 @@ buggleBot.on('guildMemberAdd', (guild: any, user: any) => {
     user.addRole('541806920814690324', 'New member joined the server!').then(() => {
         log.success('members', `New member joined: ${user.id}`);
     }, (error: any) => log.error('members', error));
+})
+
+buggleBot.on('messageCreate', (message: any) => {
+    let devMentions: string[] = ['seven','707','yournetworknerd'];
+    let devMention: any = new RegExp(devMentions.join('|'), 'gmi');
+
+    if(devMention.test(message.content)) {
+        buggleBot.getDMChannel(config.DEVELOPER).then((channel: {id: string}) => {
+            buggleBot.createMessage(channel.id { embed: {
+                title: `You were mentioned...`,
+                color: config.COLOR,
+                description: message.content,
+                fields: [
+                    {name: `User`, value: `<@${message.author.id}>`, inline: true},
+                    {name: `Channel`, value: `<#${message.channel.id}>`, inline: true}
+                ]
+            }})
+        })
+    }
 })
 
 buggleBot.connect();
