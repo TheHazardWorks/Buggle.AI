@@ -1,0 +1,29 @@
+{
+  "name": "buggle.ai",
+  "version": "0.0.0",
+  "description": "Buggle.AI Discord Bot",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "node . --debug",
+    "start": "node .",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YourNetworkNerd/Buggle.AI.git"
+  },
+  "author": "YourNetworkNerd (https://twitter.com/YourNetworkNerd)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YourNetworkNerd/Buggle.AI/issues"
+  },
+  "homepage": "https://github.com/YourNetworkNerd/Buggle.AI#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "eris": "^0.10.0",
+    "figlet": "^1.2.3",
+    "nedb": "^1.8.0",
+    "typescript": "^3.5.1"
+  }
+}
