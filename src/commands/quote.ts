@@ -1,5 +1,5 @@
 import config from '../configuration';
-let prefix : string = config.client.prefix;
+let prefix : string = config.PREFIX;
 
 export = {
     command: function() { return `quote` },
