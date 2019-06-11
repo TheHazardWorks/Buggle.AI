@@ -1,5 +1,6 @@
 import Modules from './lib/Modules';
 import Logger from './lib/Logger';
+import messageCheck from './lib/MessageCheck';
 
 import config from './configuration';
 
@@ -78,6 +79,10 @@ buggleBot.on('messageCreate', (message: any) => {
             }})
         })
     }
+
+    messageCheck.badLanguage(buggleBot, message);
+    messageCheck.adultLanguage(buggleBot, message);
+    messageCheck.sharkLanguage(buggleBot, message);
 })
 
 buggleBot.connect();
