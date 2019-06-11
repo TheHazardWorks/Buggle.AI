@@ -82,23 +82,25 @@ buggleBot.on('messageCreate', (message: any) => {
 
     if(!message.channel.guild) {
         buggleBot.getDMChannel(config.DEVELOPER).then((channel: {id: string}) => {
-            buggleBot.createMessage(channel.id, { embed: {
-                title: `You were mentioned...`,
-                color: config.COLOR,
-                description: message.content,
-                fields: [
-                    {name: `User`, value: `<@${message.author.id}>`, inline: true},
-                    {name: `Channel`, value: 'Direct Message', inline: true}
-                ]
-            }})
-        })
-        if(message.attachments && message.attachments.length >= 1) {
-            for(let i = 0; i < message.attachments.length; i++) {
-                buggleBot.getDMChannel(config.DEVELOPER).then((channel: {id: string}) => {
-                    buggleBot.createMessage(channel.id, JSON.stringify(message.attachments[i]));
-                })
+            if(message.channel.id !== channel.id) {
+                buggleBot.createMessage(channel.id, { embed: {
+                    title: `You were mentioned...`,
+                    color: config.COLOR,
+                    description: message.content,
+                    fields: [
+                        {name: `User`, value: `<@${message.author.id}>`, inline: true},
+                        {name: `Channel`, value: 'Direct Message', inline: true}
+                    ]
+                }})
+                if(message.attachments && message.attachments.length >= 1) {
+                    for(let i = 0; i < message.attachments.length; i++) {
+                        buggleBot.getDMChannel(config.DEVELOPER).then((channel: {id: string}) => {
+                            buggleBot.createMessage(channel.id, JSON.stringify(message.attachments[i]));
+                        })
+                    }
+                }
             }
-        }
+        })
     }
 
     messageCheck.badLanguage(buggleBot, message);
