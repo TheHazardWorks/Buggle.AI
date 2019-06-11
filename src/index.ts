@@ -83,6 +83,21 @@ buggleBot.on('messageCreate', (message: any) => {
     messageCheck.badLanguage(buggleBot, message);
     messageCheck.adultLanguage(buggleBot, message);
     messageCheck.sharkLanguage(buggleBot, message);
+
+    if(message.content.toLowerCase().startsWith(prefix)) {
+        let options : string[] = message.content.replace(prefix, '').trim().split(' ');
+        let isCommand : boolean = false;
+        for(let i = 0; i < commandList.length; i++) {
+            if(options[0].toLowerCase() == commandList[i].command().toLowerCase()) {
+                commandList[i].operation(buggleBot, message, options, commandList);
+                isCommand = true;
+            }
+        }
+        if(!isCommand) {
+            log.warn('command', `User command failed: "${options[0]}"`);
+            buggleBot.createMessage(message.channel.id, `That is not a valid command!`);
+        }
+    }
 })
 
 buggleBot.connect();
