@@ -14,7 +14,7 @@ const badLanguage: string[] = [
     'natsea',
 ];
 const adultLanguage: string[] = [
-    'cock','cunt','pussy','vagina','penis','porn','hentai','cum ','anal ','antiquing',
+    'cock','cunt','vagina','penis','porn','hentai','cum ','anal ','antiquing',
     'ahegao',' oral','humping','bdsm','anal ','nipple','cervix'
 ];
 
@@ -50,7 +50,7 @@ export = {
             && message.channel.id !== '549400876834488340') {
             message.delete('Deleted by BuggleAI for Adult Language!');
             buggle.createMessage(message.channel.id, 
-                `Whoa there <@${message.author.id}>! That's pretty lewd! Don't say things like that outside <#565619695609184292>!`
+                `Whoa there <@${message.author.id}>! That's pretty lewd! No adult language allowed!`
             )
         }
     },
